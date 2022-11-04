@@ -7,9 +7,7 @@ const registerUser = async (req: Request, res: Response) => {
   const user:User = req.body;
 
   await userService.registerUser(user);
-
   const token = generateToken(user);
-
   res.status(201).json({ token });
 };
 

@@ -9,6 +9,9 @@ const registerProduct = async (req: Request, res: Response) => {
   res.status(201).json(result);
 };
 
-const getProducts = () => {};
+const getProducts = async (_req: Request, res: Response) => {
+  const result = await productService.getProducts();
+  res.status(200).json(result);
+};
 
 export { registerProduct, getProducts };

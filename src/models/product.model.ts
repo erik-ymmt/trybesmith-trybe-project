@@ -1,15 +1,16 @@
-import { Product } from '../interfaces/product.interface';
+import { ResultSetHeader } from 'mysql2/promise';
 import connection from './connection';
+import { Product, ProductWithId } from '../interfaces/product.interface';
 
-const registerProduct = async (product: Product) => {
-  const result = await connection.execute(
-    'INSERT INTO Trybesmith.Products (name, amount, order_id) VALUES (?, ?, ?);',
-    [product.name, product.amount, product.orderId],
+const registerProduct = async (product: Product): Promise<ProductWithId> => {
+  console.log('teste', product);
+
+  const [{ insertId }] = await connection.execute<ResultSetHeader>(
+    'INSERT INTO Trybesmith.Products (name, amount) VALUES (?, ?)',
+    [product.name, product.amount],
   );
 
-  console.log(result);
-
-  return result;
+  return { id: insertId, ...product };
 };
 
 const getProducts = () => {};

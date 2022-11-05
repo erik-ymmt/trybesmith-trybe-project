@@ -9,4 +9,9 @@ interface UserdWithId extends User {
   id: number;
 }
 
-export { User, UserdWithId };
+interface Login {
+  username: string;
+  password: string;
+}
+
+export { User, UserdWithId, Login };

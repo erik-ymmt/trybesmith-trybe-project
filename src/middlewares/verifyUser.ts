@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import * as database from '../authentication/getExistentUsers';
+import * as database from '../helpers/getExistentUsers';
 
 const verifyUser = async (req: Request, res: Response, next: NextFunction) => {
   const { username, password } = req.body;

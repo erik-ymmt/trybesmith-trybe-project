@@ -17,4 +17,11 @@ const getProducts = async () => {
   return result;
 };
 
-export { registerProduct, getProducts };
+const updateProductOrderId = async (orderId: number, id: number) => {
+  await connection.execute(
+    'UPDATE Trybesmith.Products SET orderId=? WHERE id=?',
+    [orderId, id],
+  );
+};
+
+export { registerProduct, getProducts, updateProductOrderId };
